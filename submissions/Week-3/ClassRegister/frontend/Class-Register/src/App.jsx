@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [name, setName] = useState('')
-  const [id, setId] = useState(0)
+  const [id, setId] = useState('')
   const [students, setStudents] = useState([])
   
   const contractAddress = '0x88Fb99843Ee62d7DD60fdf73e59f7Fe78D171096'
@@ -24,7 +24,7 @@ function App() {
     const signer = await provider.getSigner()
     const contract = new ethers.Contract(contractAddress, abi, signer)
     try {
-      const loadingToastId = toast.loading("Processing registration...")
+      const loadingToastId = toast.info("Processing registration...")
       const tx = await contract.registerStudent(name)
       const receipt = await tx.wait()
       setName('')
@@ -35,9 +35,8 @@ function App() {
 
       let errorMessage = "Transaction failed";
 
-      // Extract revert reason from different sources
       if (err.revert?.args?.length) {
-        errorMessage = err.revert.args[0]; // This should contain "Student already deleted"
+        errorMessage = err.revert.args[0];
       } else if (err.reason) {
         errorMessage = err.reason;
       } else if (err.data?.message) {
@@ -58,10 +57,10 @@ function App() {
     const signer = await provider.getSigner()
     const contract = new ethers.Contract(contractAddress, abi, signer)
     try {
-      const loadingToastId = toast.loading("Processing deletion...")
+      const loadingToastId = toast.info("Processing deletion...")
       const tx = await contract.deleteStudent(id)
       const receipt = await tx.wait()
-      setId()
+      setId('')
       allStudents()
       toast.update(loadingToastId, { render: 'Deletion Successful', type: "success", isLoading: false, autoClose: 5000 })
     } catch(err) {
@@ -69,9 +68,8 @@ function App() {
 
       let errorMessage = "Transaction failed";
 
-      // Extract revert reason from different sources
       if (err.revert?.args?.length) {
-        errorMessage = err.revert.args[0]; // This should contain "Student already deleted"
+        errorMessage = err.revert.args[0];
       } else if (err.reason) {
         errorMessage = err.reason;
       } else if (err.data?.message) {
@@ -91,7 +89,7 @@ function App() {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const contract = new ethers.Contract(contractAddress, abi, provider)
     try {
-      const loadingToastId = toast.loading("Retrieving students...")
+      const loadingToastId = toast.info("Retrieving students...")
       const students = await contract.allStudents()
       console.log(students)
       const formattedStudents = students.map(task => ({
@@ -107,9 +105,8 @@ function App() {
 
       let errorMessage = "Transaction failed";
 
-      // Extract revert reason from different sources
       if (err.revert?.args?.length) {
-        errorMessage = err.revert.args[0]; // This should contain "Student already deleted"
+        errorMessage = err.revert.args[0]; 
       } else if (err.reason) {
         errorMessage = err.reason;
       } else if (err.data?.message) {
@@ -208,7 +205,7 @@ function App() {
         style={{
           padding: "8px 12px",
           border: "none",
-          backgroundColor: "#6200ea",
+          backgroundColor: "#6f0fea",
           color: "#fff",
           borderRadius: "4px",
           cursor: "pointer",
