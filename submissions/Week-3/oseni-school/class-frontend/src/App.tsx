@@ -1,24 +1,30 @@
-
-
-
 import  { useState, useEffect } from 'react';
-import { ethers } from 'ethers';
-import './ClassRegistration.css';
+import { BrowserProvider, ethers } from 'ethers';
 import './App.css'
 import abi from './abi.json';
+
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
+
+
+
 const contractAddress = "0x2F884f98f7CF70e66F1eae7E50Ae4ce5a8C951aa";
 const contractABI = abi.abi;
 
 function App() {
-  const [provider, setProvider] = useState(null);
-  const [signer, setSigner] = useState(null);
-  const [contract, setContract] = useState(null);
+  const [provider, setProvider] = useState<BrowserProvider | null>(null);
+  const [signer, setSigner] = useState<ethers.Signer | null>(null);
+  const [contract, setContract] = useState<ethers.Contract | null>(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const init = async () => {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
+      const provider = new BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner();
       const contract = new ethers.Contract(contractAddress, contractABI, signer);
       setProvider(provider);
       setSigner(signer);
@@ -29,10 +35,13 @@ function App() {
 
   const registerClass = async () => {
     try {
+      if (!contract) {
+        throw new Error("Contract not initialized");
+      }
       const tx = await contract.registerClass();
       await tx.wait();
       setMessage("Class registered successfully!");
-    } catch (error) {
+    } catch (error: any) {
       setMessage("Error registering class: " + error.message);
     }
   };
