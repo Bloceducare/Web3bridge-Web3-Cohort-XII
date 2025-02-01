@@ -5,3 +5,5 @@ The project contains the Dapp Frontend Code Where the Admin can add a student an
 The Smart Contract was deployed on the sepolia network using hardhat
 
 Smart Contract Address : 0x5FCa4659a2fb727566e46C9605E849c5D499aBf5
+
+Project Live Link Deployed Using Vercel : https://web3bridge-web3-cohort-xii.vercel.app/
