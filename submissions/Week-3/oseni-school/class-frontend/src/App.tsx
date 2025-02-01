@@ -13,8 +13,8 @@ const contractAddress = "0x2F884f98f7CF70e66F1eae7E50Ae4ce5a8C951aa";
 const contractABI = abi.abi;
 
 function App() {
-  const [provider, setProvider] = useState<BrowserProvider | null>(null);
-  const [signer, setSigner] = useState<ethers.Signer | null>(null);
+  const [, setProvider] = useState<BrowserProvider | null>(null);
+  const [, setSigner] = useState<ethers.Signer | null>(null);
   const [contract, setContract] = useState<ethers.Contract | null>(null);
   const [message, setMessage] = useState<string>("");
   const [students, setStudents] = useState<any[]>([]);
