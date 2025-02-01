@@ -62,10 +62,10 @@ This Solidity smart contract implements a decentralized **Car Rental System** wh
 4. Users can return rented cars using `returnCar` and receive a refund.
 5. Use `getCarDetails` to check car availability and pricing.
 
-## Contract Addressz
+## Contract Address
 
 0xB0832006caDCC2F2e92942D2A044e9574C58a73A
-[text](https://sepolia.etherscan.io/address/0xB0832006caDCC2F2e92942D2A044e9574C58a73A#code)
+[Sepolia Verified Link](https://sepolia.etherscan.io/address/0xB0832006caDCC2F2e92942D2A044e9574C58a73A#code)
 
 ## Conclusion
 
