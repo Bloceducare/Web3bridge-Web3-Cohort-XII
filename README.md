@@ -1,150 +1,63 @@
-# Web3bridge Web3 Cohort XII - GitHub Contribution Guide
+# CarDealer Smart Contract
 
-Welcome to the Web3Bridge Cohort XII training program! This repository is used for submitting tasks, tracking student progress, and grading assessments. Follow this guide to ensure a smooth contribution process.
+## Overview
+The `CarDealer` smart contract is an Ethereum-based decentralized application for managing car inventory and sales. It enables an owner to add staff members, who can then register new cars, retrieve car details, and mark cars as sold. The contract implements role-based access control using modifiers and mappings.
 
----
+## Implementation Details
 
-## For Students: Submitting Your Tasks
+### 1. Contract Structure
+- **Struct `Car`**: Represents a car with attributes including `id`, `name`, `model`, `year`, `mileage`, and `sold` status.
+- **State Variables**:
+  - `owner`: Stores the contract owner’s address.
+  - `car_num`: Keeps track of the total number of cars added.
+  - `car`: Temporary storage for car struct.
+  - `staffs`: Mapping to track staff members.
+  - `cars`: Mapping to store car details indexed by car ID.
 
-### 1. Fork the Repository
+### 2. Constructor
+The constructor initializes the contract owner as the deployer (`msg.sender`) and assigns them staff privileges.
 
-Create a personal copy of this repository on your GitHub account.
+### 3. Modifiers
+- `onlyOwner`: Ensures that only the owner can execute specific functions.
+- `onlyStaff`: Restricts certain functions to authorized staff members.
 
-- Visit the repository page: [Web3bridge-Web3-Cohort-XII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XII)
-- Click the "Fork" button at the top right of the page.
+### 4. Core Functions
+#### `addCar(string memory _name, string memory _model, uint _year, uint _mileage) public onlyStaff(msg.sender)`
+- Allows staff to register a new car.
+- Assigns a unique `id` to each car.
+- Stores the car details in the `cars` mapping.
 
-### 2. Clone Your Forked Repository
+#### `getCar(uint _id) public view returns (Car memory)`
+- Retrieves car details by `id`.
 
-Download your forked repository to your local machine:
+#### `sellCar(uint _id) public onlyStaff(msg.sender) returns (Car memory)`
+- Marks a car as sold.
+- Ensures the car has not already been sold.
 
-```bash
-git clone https://github.com/<your_username>/Web3bridge-Web3-Cohort-XII
-cd Web3bridge-Web3-Cohort-XII
-```
+#### `addStaff(address _address) public onlyOwner`
+- Allows the owner to add a new staff member.
+- Prevents adding an invalid or existing staff address.
 
-### 3. Sync Your Repository Regularly
+#### `removeStaff(address _address) public onlyOwner`
+- Allows the owner to remove a staff member.
+- Ensures the address exists before removing it.
 
-Keep your fork updated with the latest changes from the main repository:
+## Key Concepts Used
+### 1. **Access Control**
+- Implemented using `onlyOwner` and `onlyStaff` modifiers to restrict actions.
 
-```bash
-git remote add upstream https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XII
-git pull upstream master
-git push origin master
-```
+### 2. **Mappings**
+- Used for efficient lookup of staff members and car records.
 
-### 4. Navigate to the Correct Submission Folder
+### 3. **Structs**
+- `Car` struct encapsulates car attributes.
 
-Tasks are categorized by week and day. Navigate to the appropriate folder:
+### 4. **Modifiers**
+- Improve code reusability and security by enforcing role-based restrictions.
 
-```bash
-cd submissions/week-<week_number>/day-<day_number>
-```
+### 5. **State Management**
+- The contract maintains state using mappings and incrementing counters for unique car IDs.
 
-Example:
+## Conclusion
+The `CarDealer` contract effectively models a decentralized car dealership, enforcing role-based access, managing car inventory, and ensuring transaction integrity.
 
-```bash
-cd submissions/week-1/day-1
-```
-
-### 5. Create Your Personal Folder
-
-Each student should create a folder using their registered name and project name:
-
-```bash
-mkdir <your_name>-<project_name>
-```
-
-Example:
-
-```bash
-mkdir JohnDoe-Merkle-Tree
-```
-
-### 6. Add Your Task Files
-
-Place your task files inside your folder. Ensure proper documentation and organization.
-
-### 7. Commit and Push Your Changes
-
-Save your changes and push them to your forked repository:
-
-```bash
-git add .
-git commit -m "Add Week <week_number> Day <day_number> task for <your_name> <project_name>"
-git push origin main
-```
-
-Example:
-
-```bash
-git add .
-git commit -m "Add Week 1 Day 1 task for JohnDoe Merkle Tree"
-git push origin main
-```
-
-### 8. Create a Pull Request
-
-- Go to the original GitHub repository in your browser: [Web3bridge-Web3-Cohort-XII](https://github.com/Bloceducare/Web3bridge-Web3-Cohort-XII).
-- Click on the Pull Requests tab.
-- Click New Pull Request and select "Compare across forks" if needed.
-- Select your forked repository and branch as the source, and the master branch of the original repository as the destination.
-- Provide a descriptive title and include details about your project in the description.
-
-Example PR Title:
-
-```bash
-Add Week 1 Day 1 task for JohnDoe Merkle Tree
-```
-
-### 9. Wait for Review
-
-Mentors may leave comments or request changes. Make updates accordingly and push again.
-
----
-
-## Additional Notes
-
-- Ensure your project is complete, well-documented, and functional before submitting.
-- Follow the repository's coding and folder structure guidelines.
-- Create a new folder each week and place all files and assets related to that week's project in the folder.
-- PRs should have meaningful descriptions.
-- Regularly sync the repository to get the latest updates.
-- If you encounter any issues, contact your training facilitator for help.
-
-## For Mentors: Managing Tasks
-
-### 1. Adding Tasks
-
-- Navigate to the **tasks/week-<week_number>/** folder.
-- Create a markdown file named `Day-<day_number>-task.md`.
-- Provide clear instructions and expectations.
-- Commit and push your changes.
-
-Example:
-
-```bash
-git add tasks/week-1/Day-1-task.md
-git commit -m "Add Week 1 Day 1 Merkle Tree Task"
-git push origin main
-```
-
-### 2. Preparing the Submission Folder
-
-- Navigate to the **submissions/week-<week_number>/** folder.
-- If a task is given for a specific day, create a corresponding **day subfolder** (`day-<day_number>/`).
-- Example:
-  submissions/week-3/day-2/
-
-- Students will submit inside this subfolder using their **Registered Name** and **Project Name** as their personal directory.
-- Example:
-  submissions/week-3/day-2/JohnDoe-Merkle-Tree/
-
-### 3. Reviewing Student Submissions
-
-- Check the Pull Requests (PRs) tab on GitHub.
-- Open a PR and review the student’s work.
-- Leave comments for corrections if needed.
-- Approve the PR if it meets expectations.
-- Merge the PR after approval.
-
-Thank you for contributing to Web3Bridge Cohort XII! Happy coding!
