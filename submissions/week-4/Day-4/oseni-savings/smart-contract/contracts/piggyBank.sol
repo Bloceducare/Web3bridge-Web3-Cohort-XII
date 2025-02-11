@@ -4,12 +4,12 @@ contract PiggyBank {
     address payable public owner;
     uint public withdrawalDate;
     mapping (address => uint) public deposits;
-    bool transient locked;
+ 
 
     error WithdrawalTooEarly();
     error InsufficientFunds();
     error Unauthorized();
-
+  
     constructor(uint _withdrawalDate) payable {
         owner = payable(msg.sender);
         withdrawalDate = _withdrawalDate;
@@ -19,13 +19,7 @@ contract PiggyBank {
         _; //Placeholder for function body
     }
 
-    modifier nonReentrant() {
-        require(!locked, "Reentrancy attempt");
-        locked = true;
-        _;
-        locked = false;
-    }
-
+  
     modifier onlyOwner() {
         if (msg.sender != owner) revert Unauthorized();
         _;
@@ -35,7 +29,7 @@ contract PiggyBank {
         deposits[msg.sender] += msg.value;
     }
 
-    function withdraw() public notFrozen nonReentrant {
+    function withdraw() public notFrozen  {
         if (block.timestamp < withdrawalDate) {
             revert WithdrawalTooEarly();
         }
