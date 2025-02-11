@@ -14,3 +14,4 @@ NB:
 - ALL THE ABOVE MOST BE WORKING TO HAVE ACCESS TO CLASS TOMMORROW
 
 Event gist link: https://gist.github.com/manoahLinks/0eace1e162f7fa0834d104457cb7fcbc
+
