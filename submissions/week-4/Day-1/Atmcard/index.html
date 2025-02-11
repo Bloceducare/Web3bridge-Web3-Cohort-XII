@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Credit Card Validator</h2>
+        <input type="text" id="cardNumber" placeholder="Enter card number">
+        <button onclick="checkCard()">Validate</button>
+        <p class="result" id="result"></p>
+    </div>
+
+    <script>
+        function isValidCardNumber(cardNumber) {
+            if (typeof cardNumber !== 'string' || !/^\d+$/.test(cardNumber)) {
+                return false; 
+            }
+
+            let digits = cardNumber.split('').map(Number);
+            let sum = 0;
+            let doubleDigit = false;
+
+            for (let i = digits.length - 1; i >= 0; i--) {
+                let num = digits[i];
+
+                if (doubleDigit) {
+                    num *= 2;
+                    if (num > 9) num -= 9;
+                }
+
+                sum += num;
+                doubleDigit = !doubleDigit;
+            }
+
+            return sum % 10 === 0;
+        }
+
+        function checkCard() {
+            let cardNumber = document.getElementById("cardNumber").value.replace(/\s/g, ''); // Remove spaces
+            let isValid = isValidCardNumber(cardNumber);
+            let resultElement = document.getElementById("result");
+            
+            if (isValid) {
+                resultElement.innerHTML = "✅ Valid Card";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.innerHTML = "❌ Invalid Card";
+                resultElement.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
