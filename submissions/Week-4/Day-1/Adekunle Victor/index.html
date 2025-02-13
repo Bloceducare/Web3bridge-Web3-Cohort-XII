@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Card Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            text-align: center;
+        }
+        .valid {
+            color: green;
+            font-weight: bold;
+        }
+        .invalid {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>ATM Card Validator</h2>
+    <input type="text" id="cardInput" placeholder="Enter ATM Card Number">
+    <p id="result"></p>
+
+    <script>
+        function validateCardNumber(cardNumber) {
+            
+            cardNumber = cardNumber.replace(/\D/g, '');
+
+            
+            if (!/^\d{13,19}$/.test(cardNumber)) {
+                return false; 
+            }
+
+            let sum = 0;
+            let shouldDouble = false;
+
+           
+            for (let i = cardNumber.length - 1; i >= 0; i--) {
+                let digit = parseInt(cardNumber[i], 10);
+
+                if (shouldDouble) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+
+                sum += digit;
+                shouldDouble = !shouldDouble;
+            }
+
+            return sum % 10 === 0;
+        }
+
+        
+        document.getElementById('cardInput').addEventListener('input', function () {
+            let cardNumber = this.value;
+            let resultElement = document.getElementById('result');
+            let isValid = validateCardNumber(cardNumber);
+
+            if (cardNumber.length >= 13) {
+                resultElement.textContent = isValid ? " Valid Card Number" : "❌ Invalid Card Number";
+                resultElement.className = isValid ? "valid" : "invalid";
+            } else {
+                resultElement.textContent = ""; 
+            }
+        });
+    </script>
+</body>
+</html>

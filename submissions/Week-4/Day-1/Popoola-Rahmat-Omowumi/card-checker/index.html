@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 250px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Credit Card</h1>
+    <p>Enter a 16-digit credit card number:</p>
+    <input type="text" id="cardNumber" maxlength="16" placeholder="Enter card number">
+    <button onclick="checkCard()">Validate</button>
+
+    <p id="result"></p>
+
+    <script>
+        function validateCard(cardNumber) {
+            if (!/^\d{16}$/.test(cardNumber)) {
+                return "Please enter a valid 16-digit number.";
+            }
+
+            let digits = cardNumber.split('').map(Number);
+            
+            
+            for (let i = 0; i < digits.length; i += 2) { 
+                digits[i] *= 2;
+                if (digits[i] > 9) {
+                    digits[i] = Math.floor(digits[i] / 10) + (digits[i] % 10); 
+                }
+            }
+
+      
+            let total = digits.reduce((sum, num) => sum + num, 0);
+
+           
+            return total % 10 === 0 ? "✅ Valid Card Number" : "❌ Invalid Card Number";
+        }
+
+        function checkCard() {
+            let cardNumber = document.getElementById("cardNumber").value;
+            let result = validateCard(cardNumber);
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+
+</body>
+</html>

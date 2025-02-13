@@ -1,4 +1,4 @@
-.DS_Store
+
 
 # Ignore all node_modules folders in any subdirectory
 **/node_modules/
@@ -21,4 +21,6 @@ coverage.json
 # Hardhat Ignition default folder for deployments against a local node
 ignition/deployments/chain-31337/
 
+
+**/.DS_Store
 
