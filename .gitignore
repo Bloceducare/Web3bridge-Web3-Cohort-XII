@@ -1,21 +1,2 @@
-# Ignore all node_modules folders in any subdirectory
-**/node_modules/
-
-# Ignore all .env files in any subdirectory
-**/.env
-
-# Hardhat files
-cache/
-artifacts/
-
-# TypeChain files
-typechain/
-typechain-types/
-
-# solidity-coverage files
-coverage/
-coverage.json
-
-# Hardhat Ignition default folder for deployments against a local node
-ignition/deployments/chain-31337/
-
+.DS_Store
+**/.DS_Store

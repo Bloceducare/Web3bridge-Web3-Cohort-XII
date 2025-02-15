@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/olive_thinkpad/Documents/hardhat-202/contracts/Ballot.sol": {
+      "lastModificationDate": 1738268997431,
+      "contentHash": "85ff1977b8756055a69bc58ea432f49e",
+      "sourceName": "contracts/Ballot.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "Ballot"
+      ]
+    }
+  }
+}
