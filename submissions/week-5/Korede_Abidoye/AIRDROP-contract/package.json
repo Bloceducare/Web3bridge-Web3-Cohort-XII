@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "deploy": "npx hardhat run scripts/deploy.ts",
+    "test": "npx hardhat test",
+    "generate-merkle": "npx ts-node scripts/generateMerkle.ts"
+  },
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "hardhat": "^2.22.18"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.7",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.4.1"
+  }
+}
