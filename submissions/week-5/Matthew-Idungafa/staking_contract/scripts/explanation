@@ -1,0 +1,147 @@
+Detailed Component Explanation
+1. Contract Structure & Inheritance
+
+Inherits from ReentrancyGuard for protection against reentrancy attacks
+Inherits from Ownable for administrative functions
+Uses OpenZeppelin's IERC20 interface for token interactions
+
+2. Key State Variables
+
+s_stakingToken: The token users can stake
+s_rewardsToken: The token given as rewards
+s_totalSupply: Total amount of tokens staked
+stakingStart: Tracks when each user started staking
+s_balances: Maps user addresses to their staked amounts
+s_rewards: Tracks pending rewards for each user
+
+3. Constants
+
+REWARD_RATE: Fixed reward rate per second (100)
+MINIMUM_STAKING_PERIOD: Required staking duration (1 day)
+MAX_REWARD_RATE: Cap on reward rate (1000)
+
+4. Core Functions
+Staking Process
+solidityCopyfunction stake(uint256 amount)
+
+Validates amount is > 0
+Updates reward calculations
+Increases total supply and user balance
+Records staking start time
+Transfers tokens from user to contract
+Emits Staked event
+
+Withdrawal Process
+solidityCopyfunction withdraw(uint256 amount)
+
+Checks minimum staking period
+Updates rewards
+Decreases total supply and user balance
+Transfers tokens back to user
+Emits Withdrawn event
+
+Reward Claiming
+solidityCopyfunction claimReward()
+
+Updates reward calculations
+Transfers earned rewards
+Resets user's reward balance
+Emits RewardsClaimed event
+
+5. Safety Features
+Reentrancy Protection
+
+Uses OpenZeppelin's ReentrancyGuard
+All state changes before external calls
+nonReentrant modifier on critical functions
+
+Emergency Features
+solidityCopyfunction emergencyWithdraw()
+
+Allows withdrawal during emergencies
+Bypasses staking period check
+Only available when emergencyStop is active
+
+Input Validation
+
+moreThanZero modifier
+Transfer success checks
+Minimum staking period enforcement
+
+6. Reward Calculation
+solidityCopyfunction rewardPerToken()
+
+Calculates rewards based on:
+
+Time elapsed since last update
+Total staked tokens
+Reward rate
+
+
+Uses 18 decimal precision
+
+7. Admin Controls
+
+Emergency stop functionality
+Owned by deployer
+Configurable parameters
+
+Requirements Alignment
+
+✅ ERC20 Token Staking
+
+Implements full ERC20 token support
+Secure transfer handling
+
+
+✅ Stake Tracking
+
+Accurate balance tracking
+Timestamp recording
+
+
+✅ Time-based Rewards
+
+Per-second reward calculation
+Proportional to stake amount
+
+
+✅ Minimum Staking Period
+
+1 day minimum stake time
+Enforced on withdrawals
+
+
+✅ Security Measures
+
+Reentrancy protection
+Owner controls
+Emergency features
+Input validation
+
+
+
+Gas Optimization Features
+
+Efficient Storage
+
+Minimal state variables
+Appropriate variable types
+
+
+Batch Processing
+
+Combined reward updates
+Single-transaction operations
+
+
+View Functions
+
+Calculation optimization
+No unnecessary storage reads
+
+
+Error Handling
+
+Custom errors instead of strings
+Efficient revert conditions
