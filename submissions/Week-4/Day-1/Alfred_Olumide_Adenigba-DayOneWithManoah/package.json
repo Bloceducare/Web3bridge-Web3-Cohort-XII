@@ -1,0 +1,12 @@
+{
+  "name": "day-1-with-manoah",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Olumide Adenigba",
+  "license": "ISC",
+  "description": "This is Luhn Algorithm"
+}
