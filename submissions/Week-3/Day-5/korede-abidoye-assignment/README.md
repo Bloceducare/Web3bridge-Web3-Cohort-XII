@@ -54,7 +54,6 @@ A mapping `mobilePhones` stores each registered mobile phone, using an `id` as t
 - `require` statements ensure valid function execution.
 
 
-
 ## AUTHOR
 
 KOREDE ABIDOYE
