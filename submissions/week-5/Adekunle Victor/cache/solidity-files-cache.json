@@ -1,10 +1,10 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\contracts\\charity.sol": {
-      "lastModificationDate": 1739472505749,
-      "contentHash": "67f1baeefd6d0ab77331b239b01f0808",
-      "sourceName": "contracts/charity.sol",
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\contracts\\Company.sol": {
+      "lastModificationDate": 1739602728158,
+      "contentHash": "63d6e4e8c5fe6f3da0c767d1056c132f",
+      "sourceName": "contracts/Company.sol",
       "solcConfig": {
         "version": "0.8.28",
         "settings": {
@@ -30,17 +30,91 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
       ],
       "versionPragmas": [
         "^0.8.28"
       ],
       "artifacts": [
-        "CharityToken"
+        "CompanyMultiSigners"
       ]
     },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
-      "lastModificationDate": 1739461483448,
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+      "lastModificationDate": 1739597851619,
+      "contentHash": "8f19f64d2adadf448840908bbaf431c8",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
+      "lastModificationDate": 1739597851623,
+      "contentHash": "794db3115001aa372c79326fcfd44b1f",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+      "solcConfig": {
+        "version": "0.8.28",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20Metadata"
+      ]
+    },
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
+      "lastModificationDate": 1739597851431,
       "contentHash": "227a6eb2225701c12d9c959b758b6333",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
       "solcConfig": {
@@ -80,44 +154,8 @@
         "ERC20"
       ]
     },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
-      "lastModificationDate": 1739461483521,
-      "contentHash": "8f19f64d2adadf448840908bbaf431c8",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC20"
-      ]
-    },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1739461483409,
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1739597851344,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -152,8 +190,8 @@
         "Context"
       ]
     },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC6093.sol": {
-      "lastModificationDate": 1739461483419,
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC6093.sol": {
+      "lastModificationDate": 1739597851369,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
@@ -190,10 +228,10 @@
         "IERC721Errors"
       ]
     },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
-      "lastModificationDate": 1739461483522,
-      "contentHash": "794db3115001aa372c79326fcfd44b1f",
-      "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\contracts\\companyToken.sol": {
+      "lastModificationDate": 1739601702993,
+      "contentHash": "f4b1db39f15fc40221ccc7d21c5e415d",
+      "sourceName": "contracts/companyToken.sol",
       "solcConfig": {
         "version": "0.8.28",
         "settings": {
@@ -219,54 +257,16 @@
         }
       },
       "imports": [
-        "../IERC20.sol"
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol"
       ],
       "versionPragmas": [
-        "^0.8.20"
+        "^0.8.28"
       ],
       "artifacts": [
-        "IERC20Metadata"
+        "CompanyToken"
       ]
     },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\contracts\\CrowdFunding.sol": {
-      "lastModificationDate": 1739470563290,
-      "contentHash": "9804f75f9c6958d60d6435a43f99bf8a",
-      "sourceName": "contracts/CrowdFunding.sol",
-      "solcConfig": {
-        "version": "0.8.28",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "0.8.28"
-      ],
-      "artifacts": [
-        "CrowdFunding"
-      ]
-    },
-    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\CrowdFunding\\contracts\\Lock.sol": {
+    "C:\\Users\\USER\\Desktop\\myDesktop\\SMART-CONTRACT\\MULTI-SIGNERS\\contracts\\Lock.sol": {
       "lastModificationDate": 1738261162365,
       "contentHash": "7eee587c347fe6b1de50c96688cb9477",
       "sourceName": "contracts/Lock.sol",

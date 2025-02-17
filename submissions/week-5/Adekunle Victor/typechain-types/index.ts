@@ -18,9 +18,9 @@ export type { IERC20Metadata } from "./@openzeppelin/contracts/token/ERC20/exten
 export { IERC20Metadata__factory } from "./factories/@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata__factory";
 export type { IERC20 } from "./@openzeppelin/contracts/token/ERC20/IERC20";
 export { IERC20__factory } from "./factories/@openzeppelin/contracts/token/ERC20/IERC20__factory";
-export type { CharityToken } from "./contracts/charity.sol/CharityToken";
-export { CharityToken__factory } from "./factories/contracts/charity.sol/CharityToken__factory";
-export type { CrowdFunding } from "./contracts/CrowdFunding";
-export { CrowdFunding__factory } from "./factories/contracts/CrowdFunding__factory";
+export type { CompanyMultiSigners } from "./contracts/Company.sol/CompanyMultiSigners";
+export { CompanyMultiSigners__factory } from "./factories/contracts/Company.sol/CompanyMultiSigners__factory";
+export type { CompanyToken } from "./contracts/companyToken.sol/CompanyToken";
+export { CompanyToken__factory } from "./factories/contracts/companyToken.sol/CompanyToken__factory";
 export type { Lock } from "./contracts/Lock";
 export { Lock__factory } from "./factories/contracts/Lock__factory";

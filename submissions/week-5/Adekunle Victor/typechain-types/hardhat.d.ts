@@ -38,13 +38,13 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20__factory>;
     getContractFactory(
-      name: "CharityToken",
+      name: "CompanyMultiSigners",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.CharityToken__factory>;
+    ): Promise<Contracts.CompanyMultiSigners__factory>;
     getContractFactory(
-      name: "CrowdFunding",
+      name: "CompanyToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.CrowdFunding__factory>;
+    ): Promise<Contracts.CompanyToken__factory>;
     getContractFactory(
       name: "Lock",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -81,15 +81,15 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20>;
     getContractAt(
-      name: "CharityToken",
+      name: "CompanyMultiSigners",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.CharityToken>;
+    ): Promise<Contracts.CompanyMultiSigners>;
     getContractAt(
-      name: "CrowdFunding",
+      name: "CompanyToken",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.CrowdFunding>;
+    ): Promise<Contracts.CompanyToken>;
     getContractAt(
       name: "Lock",
       address: string | ethers.Addressable,
@@ -121,13 +121,13 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
-      name: "CharityToken",
+      name: "CompanyMultiSigners",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.CharityToken>;
+    ): Promise<Contracts.CompanyMultiSigners>;
     deployContract(
-      name: "CrowdFunding",
+      name: "CompanyToken",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.CrowdFunding>;
+    ): Promise<Contracts.CompanyToken>;
     deployContract(
       name: "Lock",
       signerOrOptions?: ethers.Signer | DeployContractOptions
@@ -164,15 +164,15 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20>;
     deployContract(
-      name: "CharityToken",
+      name: "CompanyMultiSigners",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.CharityToken>;
+    ): Promise<Contracts.CompanyMultiSigners>;
     deployContract(
-      name: "CrowdFunding",
+      name: "CompanyToken",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.CrowdFunding>;
+    ): Promise<Contracts.CompanyToken>;
     deployContract(
       name: "Lock",
       args: any[],
