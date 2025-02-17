@@ -1,0 +1,10 @@
+{
+    "name": "Bored Ape #1",
+    "description": "A unique Bored Ape NFT",
+    "image": "https://ipfs.io/ipfs/bafybeihktb22marsddux6ovoczs7cytlspaymgy56tx3aicmm4t37vmhri",
+    "attributes": [
+      { "trait_type": "Hat", "value": "Red" },
+      { "trait_type": "Eyes", "value": "Laser" }
+    ]
+  }
+  
