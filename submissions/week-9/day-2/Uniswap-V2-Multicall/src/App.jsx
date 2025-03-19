@@ -100,7 +100,7 @@ function App() {
       <header className="app-header">
         <h1>Uniswap V2 Pair Data Explorer</h1>
         <p className="app-subtitle">
-          Explore detailed information about Uniswap V2 pairs using Multicall V1
+          Explore detailed information about Uniswap V2 pairs using Multicall
         </p>
       </header>
 
@@ -263,7 +263,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>Uniswap V2 Pair Data Explorer - Using Multicall V1</p>
+        <p>Uniswap V2 Pair Data Explorer - Using Multicall</p>
       </footer>
     </div>
   );
