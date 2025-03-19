@@ -1,0 +1,120 @@
+[
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "name": "target",
+                        "type": "address"
+                    },
+                    {
+                        "name": "callData",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "calls",
+                "type": "tuple[]"
+            }
+        ],
+        "name": "aggregate",
+        "outputs": [
+            {
+                "name": "blockNumber",
+                "type": "uint256"
+            },
+            {
+                "name": "returnData",
+                "type": "bytes[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "name": "target",
+                        "type": "address"
+                    },
+                    {
+                        "name": "callData",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "calls",
+                "type": "tuple[]"
+            },
+            {
+                "name": "requireSuccess",
+                "type": "bool"
+            }
+        ],
+        "name": "tryAggregate",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "success",
+                        "type": "bool"
+                    },
+                    {
+                        "name": "returnData",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "returnData",
+                "type": "tuple[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getBlockHash",
+        "outputs": [
+            {
+                "name": "blockHash",
+                "type": "bytes32"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getCurrentBlockTimestamp",
+        "outputs": [
+            {
+                "name": "timestamp",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getCurrentBlockDifficulty",
+        "outputs": [
+            {
+                "name": "difficulty",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
