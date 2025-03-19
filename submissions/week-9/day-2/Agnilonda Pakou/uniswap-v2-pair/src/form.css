@@ -1,0 +1,60 @@
+input {
+    width: 100%;
+    padding: 18px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    outline: none;
+    transition: 0.3s;
+}
+
+button {
+    width: 30%;
+    padding: 18px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: orange;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#card-content #pair-details p {
+    text-align: start;
+    font-size: 15px;
+    font-weight: 500;
+    color: #b4b4b4;
+    font-family: 'Poppins', sans-serif;
+}
+
+#card-content #pair-details p span {
+    font-weight: bold;
+    color: orange;
+}
+
+#card-content #pair-details h2 {
+    text-align: start;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+#app {
+    background-color: black;
+    padding: 60px;
+    border-radius: 15px;
+}
