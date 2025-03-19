@@ -1,0 +1,5 @@
+Joski - name
+Jsk   - symbol
+1000000000000000000 - total supply
+
+0x371dbb1Fe149eBb285bBD7E4E5DC3fC309AB1053

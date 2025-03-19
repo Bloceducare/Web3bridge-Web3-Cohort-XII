@@ -22,8 +22,12 @@ const config: HardhatUserConfig = {
       accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
     },
     meter_testnet: {
-      url: METER_TESTNET_RPC_URL,
+      // url: METER_TESTNET_RPC_URL,
       accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
+      url: "https://rpctest.meter.io",
+    chainId: 83,
+        gas: 5000000,  // Increase gas limit
+    gasPrice: 20000000000,  // Set gas price (e.g., 20 gwei)
     },
   },
   etherscan: {

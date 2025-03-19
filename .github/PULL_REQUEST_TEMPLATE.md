@@ -2,13 +2,13 @@
 
 ### Student Info:
 
-- **Registered Name:** <your_name>
-- **Week:** <week_number>
-- **Day:** <day_number>
+- **Registered Name:** <Tcrown>
+- **Week:** <Week 3>
+- **Day:** <4>
 
 ### Task Details:
 
-- **Task Name:** <task_title>
+- **Task Name:** <Ballot>
 - **Task Description:** Briefly describe the task completed.
 
 ### Checklist Before Submitting:

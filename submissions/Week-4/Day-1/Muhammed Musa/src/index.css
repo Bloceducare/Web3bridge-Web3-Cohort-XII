@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.validator-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.validator-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.validator-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.validator-header {
+  background-color: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.validator-header h1 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.validator-content {
+  padding: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.card-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+.validation-result {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.validation-message {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.validation-message.valid {
+  background-color: #e6f3e6;
+  color: #2c7f2e;
+}
+
+.validation-message.invalid {
+  background-color: #f9e6e6;
+  color: #c92424;
+}
