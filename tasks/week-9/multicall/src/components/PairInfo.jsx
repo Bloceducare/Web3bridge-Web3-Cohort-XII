@@ -101,7 +101,11 @@ export default function PairInfo() {
     setError(null);
     
     try {
-      const provider = new ethers.providers.JsonRpcProvider('https://eth-mainnet.g.alchemy.com/v2/import.meta.env.$`{VITE_ALCHEMY_MAINNET_API_KEY}`');
+      const provider = new ethers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/${import.meta.env.VITE_ALCHEMY_MAINNET_API_KEY}`);
+
+
+
+        
       const multicall2 = new ethers.Contract(MULTICALL2_ADDRESS, MULTICALL2_ABI, provider);
       const pairContract = new ethers.Contract(pairAddress, UNISWAP_V2_PAIR_ABI, provider);
 
@@ -154,60 +158,124 @@ export default function PairInfo() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <div className="mb-4">
-        <input
-          type="text"
-          value={pairAddress}
-          onChange={(e) => setPairAddress(e.target.value)}
-          placeholder="Enter Uniswap V2 Pair Address"
-          className="w-full p-2 border rounded"
-        />
-        <button
-          onClick={fetchPairInfo}
-          disabled={loading || !pairAddress}
-          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400"
-        >
-          {loading ? 'Loading...' : 'Fetch Info'}
-        </button>
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Uniswap V2 Pair Explorer</h2>
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="pairAddress" className="block text-sm font-medium text-gray-700 mb-2">
+              Enter Uniswap V2 Pair Address
+            </label>
+            <div className="flex gap-2">
+              <input
+                id="pairAddress"
+                type="text"
+                value={pairAddress}
+                onChange={(e) => setPairAddress(e.target.value)}
+                placeholder="0x..."
+                className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              />
+              <button
+                onClick={fetchPairInfo}
+                disabled={loading || !pairAddress}
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200"
+              >
+                {loading ? (
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading...
+                  </span>
+                ) : (
+                  'Fetch Info'
+                )}
+              </button>
+            </div>
+          </div>
+
+          {error && (
+            <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 font-medium">Error: {error}</p>
+            </div>
+          )}
+        </div>
       </div>
 
-      {error && (
-        <div className="text-red-500 mb-4">
-          Error: {error}
-        </div>
-      )}
-
       {pairInfo && (
-        <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-bold mb-4">Pair Information</h2>
-          
-          <div className="mb-4">
-            <h3 className="font-semibold">Token 0</h3>
-            <p>Name: {pairInfo.token0.name}</p>
-            <p>Symbol: {pairInfo.token0.symbol}</p>
-            <p>Decimals: {pairInfo.token0.decimals}</p>
-            <p>Address: {pairInfo.token0.address}</p>
-          </div>
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Token 0 Card */}
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Token 0</h3>
+              <div className="space-y-2">
+                <div>
+                  <span className="text-sm text-gray-500">Name</span>
+                  <p className="font-medium">{pairInfo.token0.name}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Symbol</span>
+                  <p className="font-medium">{pairInfo.token0.symbol}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Decimals</span>
+                  <p className="font-medium">{pairInfo.token0.decimals}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Address</span>
+                  <p className="font-mono text-sm break-all">{pairInfo.token0.address}</p>
+                </div>
+              </div>
+            </div>
 
-          <div className="mb-4">
-            <h3 className="font-semibold">Token 1</h3>
-            <p>Name: {pairInfo.token1.name}</p>
-            <p>Symbol: {pairInfo.token1.symbol}</p>
-            <p>Decimals: {pairInfo.token1.decimals}</p>
-            <p>Address: {pairInfo.token1.address}</p>
-          </div>
+            {/* Token 1 Card */}
+            <div className="bg-gray-50 rounded-lg p-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Token 1</h3>
+              <div className="space-y-2">
+                <div>
+                  <span className="text-sm text-gray-500">Name</span>
+                  <p className="font-medium">{pairInfo.token1.name}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Symbol</span>
+                  <p className="font-medium">{pairInfo.token1.symbol}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Decimals</span>
+                  <p className="font-medium">{pairInfo.token1.decimals}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Address</span>
+                  <p className="font-mono text-sm break-all">{pairInfo.token1.address}</p>
+                </div>
+              </div>
+            </div>
 
-          <div className="mb-4">
-            <h3 className="font-semibold">Reserves</h3>
-            <p>Token 0: {ethers.utils.formatUnits(pairInfo.reserves[0], pairInfo.token0.decimals)}</p>
-            <p>Token 1: {ethers.utils.formatUnits(pairInfo.reserves[1], pairInfo.token1.decimals)}</p>
-            <p>Timestamp: {new Date(pairInfo.reserves[2] * 1000).toLocaleString()}</p>
-          </div>
+            {/* Reserves Card */}
+            <div className="bg-gray-50 rounded-lg p-4 md:col-span-2">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Reserves</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <span className="text-sm text-gray-500">Token 0 Reserve</span>
+                  <p className="font-medium text-lg">{ethers.formatUnits(pairInfo.reserves[0], pairInfo.token0.decimals)}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Token 1 Reserve</span>
+                  <p className="font-medium text-lg">{ethers.formatUnits(pairInfo.reserves[1], pairInfo.token1.decimals)}</p>
+                </div>
+                <div>
+                  <span className="text-sm text-gray-500">Last Updated</span>
+                  <p className="font-medium">{new Date(Number(pairInfo.reserves[2]) * 1000).toLocaleString()}</p>
+                </div>
+              </div>
+            </div>
 
-          <div>
-            <h3 className="font-semibold">Total Supply</h3>
-            <p>{ethers.utils.formatEther(pairInfo.totalSupply)}</p>
+            {/* Total Supply Card */}
+            <div className="bg-gray-50 rounded-lg p-4 md:col-span-2">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Total Supply</h3>
+              <p className="font-medium text-2xl">{ethers.formatEther(pairInfo.totalSupply)}</p>
+            </div>
           </div>
         </div>
       )}
