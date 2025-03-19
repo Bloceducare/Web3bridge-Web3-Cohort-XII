@@ -62,7 +62,7 @@ function App() {
       // Step 4: Show success notification
       toast.update(toastId, {
         render: "Pair data retrieved successfully!",
-        type: toast.TYPE.SUCCESS,
+        type: toast.success,
         isLoading: false,
         autoClose: 3000,
       });
@@ -76,7 +76,7 @@ function App() {
       // Show error notification
       toast.update(toastId, {
         render: err.message || "Failed to fetch pair data",
-        type: toast.TYPE.ERROR,
+        type: toast.error,
         isLoading: false,
         autoClose: 5000,
       });
@@ -88,7 +88,7 @@ function App() {
   const formatNumber = (value, decimals = 18) => {
     if (!value) return "0";
     try {
-      return ethers.utils.formatUnits(value, decimals);
+      return ethers.formatUnits(value, decimals);
     } catch (error) {
       console.error("Error formatting number:", error);
       return "0";
@@ -169,7 +169,7 @@ function App() {
                     <span className="stat-label">Last Updated:</span>
                     <span className="stat-value">
                       {new Date(
-                        pairData.reserves.blockTimestampLast * 1000
+                        Number(pairData.reserves.blockTimestampLast) * 1000
                       ).toLocaleString()}
                     </span>
                   </div>
@@ -265,8 +265,6 @@ function App() {
       <footer className="app-footer">
         <p>Uniswap V2 Pair Data Explorer - Using Multicall V1</p>
       </footer>
-
-      
     </div>
   );
 }
