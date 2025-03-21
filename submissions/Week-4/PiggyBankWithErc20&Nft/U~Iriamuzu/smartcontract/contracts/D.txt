@@ -1,0 +1,61 @@
+import { expect } from "chai";
+import { ethers } from "hardhat";
+import { Signer } from "ethers";
+import { PiggyBank } from "../typechain-types";
+
+describe("PiggyBank", function () {
+    let piggyBank: PiggyBank;
+    let owner: Signer, user: Signer;
+    let withdrawalDate: number;
+    let targetAmount = ethers.utils.parseEther("10");
+
+    beforeEach(async function () {
+        [owner, user] = await ethers.getSigners();
+
+        withdrawalDate = (await ethers.provider.getBlock("latest")).timestamp + 3600; // 1 hour later
+
+        const PiggyBank = await ethers.getContractFactory("PiggyBank");
+        piggyBank = await PiggyBank.deploy(targetAmount, withdrawalDate, await owner.getAddress());
+    });
+
+    it("should accept contributions", async function () {
+        const depositAmount = ethers.utils.parseEther("5");
+        await expect(piggyBank.connect(user).save({ value: depositAmount }))
+            .to.emit(piggyBank, "Contrubuted")
+            .withArgs(await user.getAddress(), depositAmount, await ethers.provider.getBlock("latest").then(block => block.timestamp));
+    });
+
+    it("should not allow contributions after withdrawal date", async function () {
+        await ethers.provider.send("evm_increaseTime", [3601]);
+        await ethers.provider.send("evm_mine", []);
+
+        await expect(piggyBank.connect(user).save({ value: ethers.utils.parseEther("1") }))
+            .to.be.revertedWith("Withdrawal date has passed");
+    });
+
+    it("should allow manager to withdraw after withdrawal date if target is met", async function () {
+        const depositAmount = targetAmount;
+        await piggyBank.connect(user).save({ value: depositAmount });
+
+        await ethers.provider.send("evm_increaseTime", [3601]);
+        await ethers.provider.send("evm_mine", []);
+
+        await expect(piggyBank.withdrawl())
+            .to.emit(piggyBank, "WithDrawn")
+            .withArgs(targetAmount, await ethers.provider.getBlock("latest").then(block => block.timestamp));
+    });
+
+    it("should not allow withdrawals before the withdrawal date", async function () {
+        await expect(piggyBank.withdrawl()).to.be.revertedWith("Withdrawal date has not passed");
+    });
+
+    it("should not allow withdrawals if target amount is not met", async function () {
+        const depositAmount = ethers.utils.parseEther("5");
+        await piggyBank.connect(user).save({ value: depositAmount });
+
+        await ethers.provider.send("evm_increaseTime", [3601]);
+        await ethers.provider.send("evm_mine", []);
+
+        await expect(piggyBank.withdrawl()).to.be.revertedWith("Target amount not met");
+    });
+});
