@@ -1,0 +1,17 @@
+{
+  "merkleRoot": "0x262c504d831fb8042ede5d07f3718ba7c84219b8b7318981385fed6c3ffed7db",
+  "proofs": [
+    {
+      "address": "0x536f7190ca407227d16FeeEe7b894dD6301c0871",
+      "proof": [
+        "0xd19a91023d5bad3c9dbd3d7bdad74a02e1f231af72fdddda1c95c051743c22d2"
+      ]
+    },
+    {
+      "address": "0x295d07155cc738e05f52db11fA12F290d4f0c65D",
+      "proof": [
+        "0xeca865defa629c9b3e41bcd09ead3cc1a031674ee1ef8a5ee9ca5e41b15b9e75"
+      ]
+    }
+  ]
+}
