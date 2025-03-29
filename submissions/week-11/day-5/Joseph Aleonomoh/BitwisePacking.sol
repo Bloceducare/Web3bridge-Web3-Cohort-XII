@@ -7,7 +7,8 @@ contract BitwisePacking {
     function addValueToSlot(uint8 value, uint8 slot) public {
         require(slot < 32, "Slot must be less than 32");
         uint256 shiftValue = uint256(slot) * 8;
-        packedBool = (uint256(value) << shiftValue) | packedBool;
+        uint256 _packedBool = ~(uint256(255) << shiftValue) & packedBool;
+        packedBool = (uint256(value) << shiftValue) | _packedBool;
     }
 
     function readValueFromSlot(uint8 slot) public view returns (uint8) {
