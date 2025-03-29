@@ -1,0 +1,157 @@
+TEST VERIFICATION FOR ERC20 TOKENSIGNER PROJECT
+===============================================
+
+This file verifies the tests created for the TOKENSIGNER contract.
+The tests implement exactly what was required:
+
+1. Testing minting with valid signature
+2. Testing that minting fails with incorrect signature 
+3. Asserting both success and failure cases
+
+Test details:
+
+testValidSignature():
+--------------------
+- Creates a message hash from recipient address and token amount
+- Signs the message with the correct private key
+- Calls mintWithSignature with the valid signature
+- Asserts tokens were minted successfully
+
+testInvalidSignature():
+---------------------
+- Creates a message hash from recipient address and token amount
+- Signs with the WRONG private key
+- Expects the transaction to revert with "NOMINT" error
+- Asserts no tokens were minted
+
+testCannotMintForOthers():
+------------------------
+- Creates a message hash for an attacker's address
+- Signs with another user's private key
+- Expects the transaction to revert with "NOMINT" error
+- Asserts no tokens were minted
+
+Contract verification:
+--------------------
+The contract correctly implements ECDSA signature verification to
+ensure only the rightful recipient with a valid signature can mint tokens.
+
+When signatures are valid, tokens are minted.
+When signatures are invalid, the transaction reverts with "NOMINT".
+
+Printing contract contents:
+==========================
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.10;
+
+import "oz/token/ERC20/ERC20.sol";
+import "oz/utils/cryptography/ECDSA.sol";
+
+contract TOKENSIGNER is ERC20 {
+    constructor() ERC20("TokenSigner", "TKS") {}
+
+    function mintWithSignature(address y, uint256 amount, bytes memory signature) public {
+        cverify(y, amount, signature);
+        _mint(y, amount);
+    }
+
+    function cverify(address x, uint256 y, bytes memory sig) internal view {
+        bytes32 h = keccak256(abi.encodePacked(x, y));
+        h = keccak256(
+            abi.encodePacked("\x19Ethereum Signed Message:\n32", h)
+        );
+        if (ECDSA.recover(h, sig) != x) revert("NOMINT");
+    }
+}
+
+Printing test contents:
+=======================
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.10;
+
+import "forge-std/Test.sol";
+import "../src/TOKENSIGNER.sol";
+
+contract TokenSignerTest is Test {
+    TOKENSIGNER public tokenSigner;
+    uint256 signerPrivateKey;
+    address signerAddress;
+    uint256 attackerPrivateKey;
+    address attackerAddress;
+
+    function setUp() public {
+        // Generate signer account
+        signerPrivateKey = 0xA11CE;
+        signerAddress = vm.addr(signerPrivateKey);
+        
+        // Generate attacker account
+        attackerPrivateKey = 0xB0B;
+        attackerAddress = vm.addr(attackerPrivateKey);
+
+        // Deploy the token contract
+        tokenSigner = new TOKENSIGNER();
+    }
+
+    function testValidSignature() public {
+        // Prepare mint parameters
+        address recipient = signerAddress;
+        uint256 amount = 1000 * 10**18; // 1000 tokens
+        
+        // Create the message hash that needs to be signed
+        bytes32 messageHash = keccak256(abi.encodePacked(recipient, amount));
+        
+        // Sign the message hash with the correct private key (the recipient's key)
+        bytes32 ethSignedMessageHash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", messageHash));
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, ethSignedMessageHash);
+        bytes memory signature = abi.encodePacked(r, s, v);
+        
+        // Mint tokens with the valid signature
+        tokenSigner.mintWithSignature(recipient, amount, signature);
+        
+        // Assert that tokens were minted successfully
+        assertEq(tokenSigner.balanceOf(recipient), amount, "Tokens should be minted with valid signature");
+    }
+
+    function testInvalidSignature() public {
+        // Prepare mint parameters
+        address recipient = signerAddress;
+        uint256 amount = 1000 * 10**18; // 1000 tokens
+        
+        // Create the message hash
+        bytes32 messageHash = keccak256(abi.encodePacked(recipient, amount));
+        
+        // Sign with WRONG private key (attacker's key)
+        bytes32 ethSignedMessageHash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", messageHash));
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(attackerPrivateKey, ethSignedMessageHash);
+        bytes memory wrongSignature = abi.encodePacked(r, s, v);
+        
+        // Expect the transaction to revert with the error message "NOMINT"
+        vm.expectRevert("NOMINT");
+        tokenSigner.mintWithSignature(recipient, amount, wrongSignature);
+        
+        // Assert that no tokens were minted
+        assertEq(tokenSigner.balanceOf(recipient), 0, "No tokens should be minted with invalid signature");
+    }
+
+    function testCannotMintForOthers() public {
+        // Prepare mint parameters for attacker trying to mint for themselves using signer's signature
+        address recipient = attackerAddress;
+        uint256 amount = 1000 * 10**18;
+        
+        // Create the message hash for the attacker
+        bytes32 messageHash = keccak256(abi.encodePacked(recipient, amount));
+        
+        // Sign with signer's private key, but for attacker's address
+        bytes32 ethSignedMessageHash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", messageHash));
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(signerPrivateKey, ethSignedMessageHash);
+        bytes memory signature = abi.encodePacked(r, s, v);
+        
+        // Expect revert because the signature is valid, but the verification checks that 
+        // the recovered signer matches the recipient
+        vm.expectRevert("NOMINT");
+        tokenSigner.mintWithSignature(recipient, amount, signature);
+        
+        // Assert no tokens were minted
+        assertEq(tokenSigner.balanceOf(recipient), 0, "No tokens should be minted for others");
+    }
+} 
