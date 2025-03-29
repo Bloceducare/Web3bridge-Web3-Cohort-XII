@@ -1,0 +1,311 @@
+{
+  "version": "3.4",
+  "log": [
+    {
+      "contracts/Auction.sol:Auction": {
+        "src": "contracts/Auction.sol:4",
+        "version": {
+          "withMetadata": "311985b9e181caf23f7a7074e0b27b05b4af2eeb7711c19c287ead428759083b",
+          "withoutMetadata": "be35bad28463d0ea0bf56835fad7025fd1be09e209451a35b81e3feb1b8a8ed3",
+          "linkedWithoutMetadata": "be35bad28463d0ea0bf56835fad7025fd1be09e209451a35b81e3feb1b8a8ed3"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "(string,uint256,address,uint256)",
+          "placeBid()",
+          "withdraw()",
+          "getMinimumBid()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Auction",
+            "src": "contracts/Auction.sol:26"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "seller",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:5"
+            },
+            {
+              "label": "item",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:6"
+            },
+            {
+              "label": "endTime",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:7"
+            },
+            {
+              "label": "highestBid",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:8"
+            },
+            {
+              "label": "highestBidder",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_address",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:9"
+            },
+            {
+              "label": "contractBalance",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:10"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.28"
+      },
+      "contracts/AuctionFactory.sol:AuctionFactory": {
+        "src": "contracts/AuctionFactory.sol:6",
+        "version": {
+          "withMetadata": "36a229922cea76b92aadacdffbe1eae64de584322afdb33a59683b4a92cc8bde",
+          "withoutMetadata": "c6cb9bbe94e61aae461a3fed12687fe934936c94dc1b63f8740f6518ad124af9",
+          "linkedWithoutMetadata": "c6cb9bbe94e61aae461a3fed12687fe934936c94dc1b63f8740f6518ad124af9"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "createAuction(string,uint256,uint256)",
+          "getAuctions()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "AuctionFactory",
+            "src": "contracts/AuctionFactory.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "admin",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "AuctionFactory",
+              "src": "contracts/AuctionFactory.sol:7"
+            },
+            {
+              "label": "auctions",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "AuctionFactory",
+              "src": "contracts/AuctionFactory.sol:8"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.28"
+      }
+    },
+    {
+      "contracts/Auction.sol:Auction": {
+        "src": "contracts/Auction.sol:4",
+        "version": {
+          "withMetadata": "311985b9e181caf23f7a7074e0b27b05b4af2eeb7711c19c287ead428759083b",
+          "withoutMetadata": "be35bad28463d0ea0bf56835fad7025fd1be09e209451a35b81e3feb1b8a8ed3",
+          "linkedWithoutMetadata": "be35bad28463d0ea0bf56835fad7025fd1be09e209451a35b81e3feb1b8a8ed3"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "(string,uint256,address,uint256)",
+          "placeBid()",
+          "withdraw()",
+          "getMinimumBid()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Auction",
+            "src": "contracts/Auction.sol:26"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "seller",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:5"
+            },
+            {
+              "label": "item",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:6"
+            },
+            {
+              "label": "endTime",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:7"
+            },
+            {
+              "label": "highestBid",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:8"
+            },
+            {
+              "label": "highestBidder",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_address",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:9"
+            },
+            {
+              "label": "contractBalance",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_uint256",
+              "contract": "Auction",
+              "src": "contracts/Auction.sol:10"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.28"
+      },
+      "contracts/AuctionFactory.sol:AuctionFactory": {
+        "src": "contracts/AuctionFactory.sol:6",
+        "version": {
+          "withMetadata": "36a229922cea76b92aadacdffbe1eae64de584322afdb33a59683b4a92cc8bde",
+          "withoutMetadata": "c6cb9bbe94e61aae461a3fed12687fe934936c94dc1b63f8740f6518ad124af9",
+          "linkedWithoutMetadata": "c6cb9bbe94e61aae461a3fed12687fe934936c94dc1b63f8740f6518ad124af9"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "createAuction(string,uint256,uint256)",
+          "getAuctions()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "AuctionFactory",
+            "src": "contracts/AuctionFactory.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "admin",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "AuctionFactory",
+              "src": "contracts/AuctionFactory.sol:7"
+            },
+            {
+              "label": "auctions",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "AuctionFactory",
+              "src": "contracts/AuctionFactory.sol:8"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.28"
+      }
+    }
+  ]
+}
