@@ -1,0 +1,3 @@
+[submodule "tasks/week-11/bolarinwa-muhdsodiq/lib/forge-std"]
+	path = tasks/week-11/bolarinwa-muhdsodiq/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
