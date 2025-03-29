@@ -98,10 +98,10 @@ const Index = () => {
         <div className="min-h-screen bg-gradient-to-br from-gray-900 to-blue-900 text-white font-sans p-8">
             {/* Header */}
             <div className="text-center mb-12">
-                <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    Uniswap V2 Explorer
+                <h1 className="text-5xl font-bold p-3 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    Omega Swap
                 </h1>
-                <p className="text-gray-400 mt-2">Explore Uniswap V2 Pair Data</p>
+                <p className="text-gray-400 mt-5">Explore Uniswap V2 Pair Data</p>
             </div>
 
             {/* Main Content */}
@@ -136,47 +136,47 @@ const Index = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 0</p>
-                            <p className="text-lg font-bold">{token0 || "N/A"}</p>
+                            <p className="text-sm font-bold">{token0 || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 1</p>
-                            <p className="text-lg font-bold">{token1 || "N/A"}</p>
+                            <p className="text-sm font-bold">{token1 || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Reserves 0</p>
-                            <p className="text-lg font-bold">{reserves0 || "N/A"}</p>
+                            <p className="text-sm font-bold">{reserves0 || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Reserves 1</p>
-                            <p className="text-lg font-bold">{reserves1 || "N/A"}</p>
+                            <p className="text-sm font-bold">{reserves1 || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Total Supply</p>
-                            <p className="text-lg font-bold">{totalSupply || "N/A"}</p>
+                            <p className="text-sm font-bold">{totalSupply || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 0 Name</p>
-                            <p className="text-lg font-bold">{token0Name || "N/A"}</p>
+                            <p className="text-sm font-bold">{token0Name || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 0 Symbol</p>
-                            <p className="text-lg font-bold">{token0Symbol || "N/A"}</p>
+                            <p className="text-sm font-bold">{token0Symbol || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 0 Decimals</p>
-                            <p className="text-lg font-bold">{token0Decimals || "N/A"}</p>
+                            <p className="text-sm font-bold">{token0Decimals || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 1 Name</p>
-                            <p className="text-lg font-bold">{token1Name || "N/A"}</p>
+                            <p className="text-sm font-bold">{token1Name || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 1 Symbol</p>
-                            <p className="text-lg font-bold">{token1Symbol || "N/A"}</p>
+                            <p className="text-sm font-bold">{token1Symbol || "N/A"}</p>
                         </div>
                         <div className="bg-gray-700 p-4 rounded-lg hover:bg-gray-600 transition-all">
                             <p className="text-sm text-gray-400">Token 1 Decimals</p>
-                            <p className="text-lg font-bold">{token1Decimals || "N/A"}</p>
+                            <p className="text-sm font-bold">{token1Decimals || "N/A"}</p>
                         </div>
                     </div>
                 </div>
