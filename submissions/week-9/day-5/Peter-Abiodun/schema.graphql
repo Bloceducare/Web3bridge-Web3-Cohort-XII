@@ -1,0 +1,43 @@
+type User @entity {
+    id: ID!
+    stakes: [Stake!]! @derivedFrom(field: "user")
+    rewards: BigInt!
+  }
+  
+  type Stake @entity {
+    id: ID!
+    user: User!
+    amount: BigInt!
+    timestamp: BigInt!
+    isWithdrawn: Boolean!
+  }
+  
+  type StakePosition @entity {
+    id: ID!
+    user: User!
+    totalStaked: BigInt!
+    pendingRewards: BigInt!
+    apr: BigInt!
+  }
+  
+  type Withdrawal @entity {
+    id: ID!
+    user: User!
+    amount: BigInt!
+    timestamp: BigInt!
+    isEmergency: Boolean!
+  }
+  
+  type Reward @entity {
+    id: ID!
+    user: User!
+    amount: BigInt!
+    timestamp: BigInt!
+  }
+  
+  type ProtocolMetrics @entity {
+    id: ID!
+    totalStaked: BigInt!
+    currentRewardRate: BigInt!
+  }
+  
