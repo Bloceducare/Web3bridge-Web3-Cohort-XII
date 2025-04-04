@@ -1,0 +1,21 @@
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="400" height="200" rx="20" ry="20" fill="url(#bgGradient)" />
+
+  <text x="20" y="50" font-family="Arial" font-size="20" fill="white">Ticket ID: #123456</text>
+
+  <text x="20" y="90" font-family="Arial" font-size="24" fill="white" font-weight="bold">Événement: Concert XYZ</text>
+
+  <text x="20" y="130" font-family="Arial" font-size="18" fill="white">Date: 25 Février 2025</text>
+
+  <line x1="20" y1="150" x2="380" y2="150" stroke="white" stroke-width="2" stroke-dasharray="5,5"/>
+
+  <rect x="320" y="40" width="60" height="60" fill="white" rx="5" ry="5"/>
+  <text x="330" y="75" font-family="Arial" font-size="14" fill="black">QR</text>
+</svg>

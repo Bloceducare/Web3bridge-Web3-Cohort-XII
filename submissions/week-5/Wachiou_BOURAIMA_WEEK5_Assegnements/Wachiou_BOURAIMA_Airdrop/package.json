@@ -1,0 +1,24 @@
+{
+  "name": "smartcontrat101",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.2.0",
+    "@types/dotenv": "^8.2.3",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.18",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.4.1",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}
