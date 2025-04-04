@@ -1,0 +1,19 @@
+[
+  {
+    "address": "0x2c55614E7fC28894F55a7169ce0af42FAFF5E457",
+    "proof": [
+      "0x835e22ffdea955cd6a1b3d70c68269999f054cb934264501bad40664a59e86df",
+      "0x23c05ab94b76db6979f9fead94137084b1b019b02e42f3c7573282646a742e30"
+    ]
+  },
+  {
+    "address": "0xb216270aFB9DfcD611AFAf785cEB38250863F2C9",
+    "proof": ["0x5f6182932434364d61694721e7db6e086a8226f833256dafe7ccd2722e93dcfc","0x23c05ab94b76db6979f9fead94137084b1b019b02e42f3c7573282646a742e30"]
+  },
+  {
+    "address": "0xd755983ba6b8308d2e79Dc35AE2ADcb027467508",
+    "proof": [
+      "0x21735ac832ec77ec8b714f81ffafec0bed2f9aad451d1bbb5ddb13bf1a204d14"
+    ]
+  }
+]
